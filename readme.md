@@ -2,7 +2,7 @@
 
 ## DEMO
 
-  - http://127.0.0.1:5500/index.html
+  - https://yukiko-shinno.github.io/LocalStorage/
 
 ## 紹介と使い方
 
