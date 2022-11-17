@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>kirikou日報</title>
+  <link rel="stylesheet" href="css/sample.css">
+</head>
+
+<body>
+  <header>
+    日報
+  </header>
+
+  <main>
+    <input type="text" id="input" placeholder="日付">
+    <textarea id="text_area" placeholder="日報"></textarea>
+    <ul>
+      <button>
+        <li id="save">保存</li>
+      </button>
+      <button>
+        <li id="clear">削除</li>
+      </button>
+
+    </ul>
+  </main>
+
+  <footer>
+    <small>kirikou</small>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    // 保存
+    $("#save").on("click", function () {
+
+      const data = {
+        title1: $("#input").val(),
+        text: $("#text_area").val(),
+      };
+
+      const jsondata = JSON.stringify(data);
+
+      localStorage.setItem("memo", jsondata);
+    });
+
+
+    // 削除
+    $("#clear").on("click", function () {
+      localStorage.removeItem("memo");
+      $("#input").val("")
+      $("#text_area").val("");
+    });
+
+    // 取得
+    if (localStorage.getItem("memo")) {
+      const jsondata = localStorage.getItem("memo");
+      console.log(jsondata);
+      const data = JSON.parse(jsondata);
+      console.log(data);
+      $("#input").val(data.title1);
+      $("#text_area").val(data.text);
+    }
+
+  </script>
+
+</body>
+
+</html>
